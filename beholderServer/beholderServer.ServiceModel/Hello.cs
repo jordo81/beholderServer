@@ -18,3 +18,4 @@ namespace beholderServer.ServiceModel
         public string TestClass { get; set; }
     }
 }
+
