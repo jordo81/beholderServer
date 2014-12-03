@@ -1,0 +1,6 @@
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceModel\bin\Debug\beholderServer.ServiceModel.dll
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceModel\bin\Debug\beholderServer.ServiceModel.pdb
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceModel\bin\Debug\ServiceStack.Interfaces.dll
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceModel\obj\Debug\beholderServer.ServiceModel.csprojResolveAssemblyReference.cache
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceModel\obj\Debug\beholderServer.ServiceModel.dll
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceModel\obj\Debug\beholderServer.ServiceModel.pdb

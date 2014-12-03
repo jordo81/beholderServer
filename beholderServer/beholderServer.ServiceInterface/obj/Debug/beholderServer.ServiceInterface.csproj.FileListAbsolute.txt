@@ -1,0 +1,16 @@
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceInterface\bin\Debug\beholderServer.ServiceInterface.dll
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceInterface\bin\Debug\beholderServer.ServiceInterface.pdb
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceInterface\bin\Debug\beholderServer.ServiceModel.dll
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceInterface\bin\Debug\ServiceStack.Client.dll
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceInterface\bin\Debug\ServiceStack.Common.dll
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceInterface\bin\Debug\ServiceStack.dll
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceInterface\bin\Debug\ServiceStack.Interfaces.dll
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceInterface\bin\Debug\ServiceStack.Text.dll
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceInterface\bin\Debug\beholderServer.ServiceModel.pdb
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceInterface\bin\Debug\ServiceStack.xml
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceInterface\bin\Debug\ServiceStack.Client.xml
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceInterface\bin\Debug\ServiceStack.Common.xml
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceInterface\bin\Debug\ServiceStack.Text.xml
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceInterface\obj\Debug\beholderServer.ServiceInterface.csprojResolveAssemblyReference.cache
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceInterface\obj\Debug\beholderServer.ServiceInterface.dll
+c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceInterface\obj\Debug\beholderServer.ServiceInterface.pdb
