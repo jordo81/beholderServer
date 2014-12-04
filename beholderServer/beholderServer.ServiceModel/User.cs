@@ -64,29 +64,46 @@ namespace beholderServer.ServiceModel
             catch(Exception ex) { throw new ArgumentException("UpdateLastLogin Failed for user " + FBID + "Exception: " + ex); }
             cmd.Dispose();
         }
+
+        //Look at more effecent calls to update on login so session is closed as fast as possible.
+        //such as geting facebook data and user data  storing / modifing query data and makeing up request.
+        // {0} values {1}
+        //keyvalue pair dictionary
+        //prase into 0 and 1
+        //post update. Update users set name="Michael Test", likeCount=1 where userid = 5
+        //
         public UserLoginResponse loginUser(MySqlConnection DB)
         {
             UserLoginResponse response = new UserLoginResponse();
             response.FBID = FBID;
+
+            //get sql user
             string query = string.Format(dbs_getUserByFBID, FBID);
             MySqlCommand cmd = new MySqlCommand(query, DB);
             MySqlDataReader rdr = cmd.ExecuteReader();
-            if(rdr.HasRows)
-            {
-                rdr.Close();
-                response.status = "Exists";
-                //Validate Login
-                //adasd
 
-                response.status = "Logged In";
-                updatelastLogin(DB);
-            }
-            else
+            //get Facebook user
+            var client = new Facebook.FacebookClient(accessToken);
+            dynamic result = client.Get("Me");
+            //Validate provided token...
+
+            if(!rdr.HasRows)
             {
                 //user dosn't exist create there account.
                 rdr.Close();
                 createUser(DB);
+                response.status = "Logged In";
+                return response;
             }
+           
+            response.status = "Exists";
+            //Validate Login
+            //adasd
+
+            response.status = "Logged In";
+
+            rdr.Close();
+            updatelastLogin(DB);
 
             return response;
         }
