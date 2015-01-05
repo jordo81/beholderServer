@@ -14,3 +14,5 @@ c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderSe
 c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceInterface\obj\Debug\beholderServer.ServiceInterface.csprojResolveAssemblyReference.cache
 c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceInterface\obj\Debug\beholderServer.ServiceInterface.dll
 c:\users\michael\documents\visual studio 2013\Projects\beholderServer\beholderServer\beholderServer.ServiceInterface\obj\Debug\beholderServer.ServiceInterface.pdb
+C:\Users\Michael\documents\visual studio 2013\Projects\BeholderServer\beholderServer\beholderServer.ServiceInterface\bin\Debug\Facebook.dll
+C:\Users\Michael\documents\visual studio 2013\Projects\BeholderServer\beholderServer\beholderServer.ServiceInterface\bin\Debug\Facebook.xml

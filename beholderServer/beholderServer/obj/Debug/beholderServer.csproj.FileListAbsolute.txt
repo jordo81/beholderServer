@@ -34,3 +34,5 @@ C:\Users\Michael\documents\visual studio 2013\Projects\BeholderServer\beholderSe
 C:\Users\Michael\documents\visual studio 2013\Projects\BeholderServer\beholderServer\beholderServer\bin\FSharp.Data.pdb
 C:\Users\Michael\documents\visual studio 2013\Projects\BeholderServer\beholderServer\beholderServer\bin\FSharp.Data.xml
 C:\Users\Michael\documents\visual studio 2013\Projects\BeholderServer\beholderServer\beholderServer\bin\FSharp.Core.xml
+C:\Users\Michael\documents\visual studio 2013\Projects\BeholderServer\beholderServer\beholderServer\bin\Facebook.dll
+C:\Users\Michael\documents\visual studio 2013\Projects\BeholderServer\beholderServer\beholderServer\bin\Facebook.xml

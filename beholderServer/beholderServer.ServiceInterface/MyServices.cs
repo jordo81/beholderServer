@@ -57,10 +57,10 @@ namespace beholderServer.ServiceInterface
         }
 
         //----Actions-------
-        //user
-        public object Any(User request)
+        //User Info Request
+        public object Any(GetUserInfo request)
         {
-            if(request.ID <= 0)
+            if(request.IDtag != "")
             {
                 throw new ArgumentNullException("ID");
                 throw HttpError.NotFound("Invalid ID");
@@ -71,6 +71,7 @@ namespace beholderServer.ServiceInterface
             return x;
         }
 
+        //User Login Request / user creation
         public object Post(UserLogin request)
         {
             string body = base.Request.GetRawBody();
@@ -96,9 +97,22 @@ namespace beholderServer.ServiceInterface
             return null;
         }
         
+        //user Logout Request
         public object Any(UserLogout request)
         {
-            return null;
+            UserLoginResponse x = new UserLoginResponse();
+            x.status = "Logged Out";
+
+            return x;
+        }
+        public object Any(getOutfits request)
+        {
+            MySqlConnection DB = GetDbConnection();
+            request.loadOutfits(DB);
+            closeDBConnection();
+
+
+             return request.outfitForReview;
         }
 
       

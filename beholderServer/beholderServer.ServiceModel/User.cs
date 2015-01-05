@@ -4,29 +4,28 @@ using System.Linq;
 using System.Web;
 using ServiceStack;
 using MySql.Data.MySqlClient;
+using System.Web.Script.Serialization;
 
 namespace beholderServer.ServiceModel
 {
-    [Route("/user/info/{ID}")]
+    
     public class User : IReturn<UserResponse>
     {
-        const string dbs_createUser = "Insert into users (fbID, accessToken, name, created, lastLogin, birthday) values ('{0}','{1}','{2}','{3}','{4}','{5}')";
-        const string dbs_getUserByID_OR_FBID = "Select * From users where userid = {0}";
-        const string dbs_getUserByFBID = "Select * From users where fbID = {0}";
-        const string dbs_updateLastLogin = "Update users SET lastLogin='{0}' where fbID = {1}";
+        
         public int ID { get; set; }
         public string FBID { get; set; }
         public string accessToken { get; set; }
         public string appID { get; set; }
 
-        public void createUser(MySqlConnection DB)
+        public void createUser(MySqlConnection DB, dynamic FB_Me)
         {
             if (appID != "" && accessToken != "" && FBID != "")
             {
                 //Get User info from facebook.
                 string now = (DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss");
-                string bday = (new DateTime(1992, 05, 20)).ToString("yyyy-MM-dd HH:mm:ss");
-                string query = string.Format(dbs_createUser, FBID, accessToken, "Michael Jordison", now, now, bday);
+                string birthday = Convert.ToString(FB_Me.birthday);
+                string bday = DateTime.ParseExact(birthday, "MM/dd/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
+                string query = string.Format(DB_Queries.dbs_createUser, FBID, accessToken, Convert.ToString(FB_Me.name), now, now, bday);
                 MySqlCommand cmd = new MySqlCommand(query, DB);
                 try
                 {
@@ -50,10 +49,22 @@ namespace beholderServer.ServiceModel
             }
 
         }
-        public void updatelastLogin(MySqlConnection DB)
+        public void postUpdates(MySqlConnection DB, Dictionary<string,string> updateVars)
         {
-            string now = (DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss");
-            string query = string.Format(dbs_updateLastLogin,now, FBID);
+            string vars = "";
+            foreach(var x in updateVars)
+            {
+                vars += x.Key + "='" + x.Value + "'";
+                if(x.Key != updateVars.Last().Key)
+                {
+                    vars += ",";
+                }
+                else
+                {
+                    break;
+                }
+            }
+            string query = string.Format(DB_Queries.dbs_updateLastLogin, vars, FBID);
             MySqlCommand cmd = new MySqlCommand(query, DB);
             try {
                 MySqlDataReader rdr = cmd.ExecuteReader();
@@ -76,34 +87,36 @@ namespace beholderServer.ServiceModel
         {
             UserLoginResponse response = new UserLoginResponse();
             response.FBID = FBID;
+            Dictionary<string,string> updateVars = new Dictionary<string,string>();
 
             //get sql user
-            string query = string.Format(dbs_getUserByFBID, FBID);
+            string query = string.Format(DB_Queries.dbs_getUserByFBID, FBID);
             MySqlCommand cmd = new MySqlCommand(query, DB);
             MySqlDataReader rdr = cmd.ExecuteReader();
+            bool userExisits = rdr.HasRows;
+            
 
             //get Facebook user
             var client = new Facebook.FacebookClient(accessToken);
             dynamic result = client.Get("Me");
-            //Validate provided token...
-
             if(!rdr.HasRows)
             {
-                //user dosn't exist create there account.
                 rdr.Close();
-                createUser(DB);
+                rdr.Dispose();
+                //user dosn't exist create there account.
+                createUser(DB,result);
                 response.status = "Logged In";
                 return response;
             }
-           
-            response.status = "Exists";
-            //Validate Login
-            //adasd
-
-            response.status = "Logged In";
+            rdr.Read();
+            //validate accessToken Hasn't changed
+            if(!this.accessToken.Equals(rdr["accessTocken"])) {
+                updateVars.Add("accessToken", accessToken);
+            }
+            updateVars.Add("lastLogin", (DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss"));
 
             rdr.Close();
-            updatelastLogin(DB);
+            postUpdates(DB, updateVars);
 
             return response;
         }
@@ -114,6 +127,12 @@ namespace beholderServer.ServiceModel
     [Route("/user/logout/")]
     public class UserLogout : User
     { }
+    [Route("/user/info/{IDtag}")]
+    public class GetUserInfo : User
+    {
+        public string IDtag;
+
+    }
     public class UserLoginResponse
     {
         public string status { get; set; }
